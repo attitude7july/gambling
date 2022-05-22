@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solutions", "solutions", "{8F49D4AF-9D22-4D28-8A69-975D9CA1174B}"
 	ProjectSection(SolutionItems) = preProject
 		.circleci\config.yml = .circleci\config.yml
+		Dockerfile = Dockerfile
 		README.md = README.md
 	EndProjectSection
 EndProject
