@@ -20,3 +20,15 @@ Example:
  "points": "+900"
 }
 </code>
+
+#Running app
+##First set your database or use in-memory database
+##Set JwtSettings in appsettings for access_token
+<code>
+"JwtAppSettings": {
+    "Secret": "",
+    "ValidAudience": "",
+    "ValidIssuer": "",
+    "SessionMinutes": 20
+  },
+</code>
