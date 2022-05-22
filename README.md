@@ -32,3 +32,8 @@ Example:
     "SessionMinutes": 20
   },
 </code>
+##Register user with email
+## Login user with credentials
+## Use access_token to access bet controller
+## Place bet
+## View betting history
