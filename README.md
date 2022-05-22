@@ -10,3 +10,13 @@ Example:
  "number": 3
 }
 </code>
+## Output contract
+### In the case of a successful bet, the player will receive his account balance back.
+Example:
+<code>
+{
+ "account": 10900
+ "status": "won"
+ "points": "+900"
+}
+</code>
