@@ -1,25 +1,24 @@
 version: '3.4'
-
 services:
-  webui:
-    image: ${DOCKER_REGISTRY-}webui
+  api:
+    hostname: api
+    container_name: api
     build:
-      context: .
-      dockerfile: src/Api
-    environment:
-      - "UseInMemoryDatabase=false"
-      - "ConnectionStrings__DefaultConnection=Server=db;Database=gamblingDb;User=sa;Password=Your_password123;MultipleActiveResultSets=true"
-    volumes:
-      - ~/.aspnet/https:/https:ro
+        context: .
+        dockerfile: ./src/api/Dockerfile
     ports:
-      - "5000:5000"
-      - "5001:5001"
-    depends_on:
-      - db
-    restart: on-failure
-
-  db:
-    image: "mcr.microsoft.com/mssql/server"
+        - "5000:80"
+        - "5001:443"
     environment:
-      - "SA_PASSWORD=Your_password123"
-      - "ACCEPT_EULA=Y"
+       - "UseInMemoryDatabase=true"
+       - ASPNETCORE_ENVIRONMENT=Development
+       - JwtAppSettings:Secret=http://localhost:3000
+       - JwtAppSettings:ValidAudience=http://localhost:3000
+       - JwtAppSettings:ValidIssuer=http://localhost:3000
+       - JwtAppSettings:SessionMinutes=20
+       - Client_Url=*
+    restart: on-failure
+    volumes:
+        - logs-vol:/app/logs/
+volumes:
+    logs-vol:
